@@ -10,7 +10,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_27_212636) do
+ActiveRecord::Schema.define(version: 2020_10_27_223158) do
+
+  create_table "businesses", force: :cascade do |t|
+    t.string "name_of_business"
+    t.string "household_service"
+    t.text "business_hours"
+    t.string "covid_policy"
+    t.string "yelp_review_url"
+    t.text "mission_text"
+    t.string "contact_info"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "homeservices", force: :cascade do |t|
+    t.string "types"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "listings", force: :cascade do |t|
     t.string "ad_name"

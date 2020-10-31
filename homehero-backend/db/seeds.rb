@@ -6,3 +6,10 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+# listing = Listing.create({
+#     ad_name: "call us",
+#     business_name: "Perfect Maid"
+
+    
+# })
+# binding.pry
