@@ -1,4 +1,4 @@
 class Listing < ApplicationRecord
-    belongs_to :service
-    belongs_to :business  
+    # belongs_to :homeservice
+    # belongs_to :business  
 end 
