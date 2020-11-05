@@ -1,4 +1,4 @@
-class Lg {
+class Listing {
     constructor(listing) { //listing object from json
         this.id = listing.id
         this.ad_name = listing.ad_name
