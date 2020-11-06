@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_27_223158) do
+ActiveRecord::Schema.define(version: 2020_11_05_194523) do
 
   create_table "businesses", force: :cascade do |t|
     t.string "name_of_business"
@@ -24,7 +24,7 @@ ActiveRecord::Schema.define(version: 2020_10_27_223158) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "homeservices", force: :cascade do |t|
+  create_table "home_services", force: :cascade do |t|
     t.string "types"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -39,6 +39,7 @@ ActiveRecord::Schema.define(version: 2020_10_27_223158) do
     t.string "add_image_url"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "home_service_id"
   end
 
 end

@@ -11,11 +11,12 @@ class ListingsController < ApplicationController
     
       def create
         listing = Listing.new(listing_params)
+        # binding.pry
         # listing = Listing.create(listing_params)
         if listing.save
-            render json: listing, status: :accepted 
+            render json: listing, status: :accepted
         else  
-            render json: {errors: listing.errors.full_messages}, status: :unprocessible_entity
+            render json: {errors: listing.errors.full_messages}
         end
        end
 
@@ -32,7 +33,10 @@ class ListingsController < ApplicationController
 private
 
   def listing_params
-    params.require(:listing).permit(:ad_name, :business_name, :logo_image_url, :listing_id, :location, :add_message, :add_image_url)
-end
+        params.require(:listing).permit(:ad_name, :business_name, :home_service_id)
+
+  end
+    # params.require(:listing).permit(:ad_name, :business_name, :logo_image_url, :listing_id, :location, :add_message, :add_image_url, :home_service_id)
+
 
 end 

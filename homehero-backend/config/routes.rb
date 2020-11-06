@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   #get '/listings', to: 'listings#index'
 #resources:listings, only: :index 
 
-  get '/listings/new'  => 'listings#new' 
+ post '/listings'  => 'listings#create' 
   get '/listings'  => 'listings#create' 
   get '/listings/:id'  => 'listings#show'
   #get '/listings/:id', to: 'listings#show'

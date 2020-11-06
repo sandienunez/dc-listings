@@ -15,6 +15,6 @@ end
 private
 
   def homeservice_params
-    params.require(:homeservice).permit(:types)
+    params.require(:home_service).permit(:types)
   end
 end
