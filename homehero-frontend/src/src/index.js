@@ -1,7 +1,7 @@
 // ********* global constants = so I don't have to repeat myself ************
 const BASE_URL = "http://localhost:3000/listings";
 const main = document.querySelector('#main');
-const listingFormDiv = document.getElementById("listing-form")
+const listingFormDiv = document.getElementById("listing-form");
 const addForm = document.querySelector("#add-listing-form")
 
   //initialize Listing class
@@ -19,20 +19,20 @@ function fetchAllListings() {
     fetch(BASE_URL)    // get request
     .then(response => response.json())
     .then(listings => {
-        listings.forEach(element => {
-        debugger
+        listings.forEach(element => { //iterate through collection of listings
+     
             main.innerHTML += `
-            <h3>Ad Name:${element.ad_name}</h3>
-            <p>${element.business_name}</p>
+            <p>******************************************************************************************************************************************</p>
+            <h3>Ad Name:</h3><p>${element.ad_name}</p>
+            <h3>Business Name:</h3><p>${element.business_name}</p>
             ` 
+// <h3>Home Service:</h3><p>${listing.home_service_id}</p>
+
         });
-        // main.innerHTML += listings.map((listing) => makeListingObjects(listing)).join("")
-        // //iterate through collection of listings
+        
         // attachClicksToLinks()
     })
-    // .then(data => displayListings(json));
 }
-        // console.log(json)
 
 // ************************* helpers for generating HTML and adding event listeners ************************ //
 function makeListingObjects(listing) {
@@ -64,22 +64,23 @@ function makeForm() {
     event.preventDefault()
     let createForm = document.getElementById("create-form")
     //in our index.html =saving location into a variable createForm, that location is saved
+    //<!-- <button class=”submit”>Create</button> --> 
     createForm.innerHTML = ""
     createForm.innerHTML += `
     <form>
     <select name="Homeservice" size=5>
-<option value="Cleaning">House Cleaning 
-<option value="Painting">Painting
-<option value="Floors">Floors/Sanding 
-<option value="Floors">Roofing
-<option value="Floors">Heating
-<option value="Floors">Electricity 
-<option value="Floors">Air Conditioning 
-<option value="Floors">Window Washing
-<option value="Floors">Carpet Cleaning
-<option value="Floors">Plumbing
-<option value="Floors">Landscaping 
-<option value="Floors">House Remodeling/Building Decks
+<option value="1">House Cleaning 
+<option value="2">Painting
+<option value="3">Floors/Sanding 
+<option value="4">Roofing
+<option value="5">Heating
+<option value="6">Electricity 
+<option value="7">Air Conditioning 
+<option value="8">Window Washing
+<option value="9">Carpet Cleaning
+<option value="10">Plumbing
+<option value="11">Landscaping 
+<option value="12">House Remodeling/Building Decks
 </select>
 </option>
 <br>
@@ -91,7 +92,6 @@ function makeForm() {
 <br>
 
 </input>
-
 <input type="submit">
 </form>
 ` 
@@ -104,14 +104,17 @@ function displayListing(){ // event handler
     // debugger
     const listingsUL = document.querySelector("#main ul")
     listingsUL.innerHTML = ""
-    // debugger 
-    event.target.querySelector("select").value
+   const homeservice = event.target.querySelector("select").value
+   
     const listing = { 
+    // types: document.querySelector('#types').value,
     ad_name: document.querySelector('#ad-name').value, //key value pair
-    business_name: document.querySelector('#business-name').value
+    business_name: document.querySelector('#business-name').value,
+    //add key
+    home_service_id: homeservice
+    document.querySelector("form").reset 
+
 }
- 
-    
     const configObj = {
         method: 'POST',
         body: JSON.stringify(listing),
@@ -129,9 +132,15 @@ fetch(BASE_URL, configObj) //fetch resources asynchronously across the network
 .then(response => response.json()) //returns a promise containing the HTTP response object (not json
 //To extract the JSON body content from the response, we use the json() method )
 .then(listing => { 
-    console.log()
+    console.log(listing)
     //logic
     //make nodes h3 set innertext 
+    let displayads = main.innerHTML `
+    <h3> ads here </h3>
+    `
+
+ 
+    
 })
 }
 
