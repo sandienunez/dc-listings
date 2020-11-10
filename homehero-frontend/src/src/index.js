@@ -47,18 +47,6 @@ function attachClicksToLinks(){
 
 }
 
-// function displayListingForm(){
-    
-//     event.preventDefault()
-// console.log("click")
-// }
-
-// Strategy:
-// 1. grab node in console = confirm yu can get it in the console 
-// 2. call add event listener = listen for event to be triggered
-// 3. call that function (make it empty to begin with )
-// 4. make a function that displaysForm 
-
 function makeForm() {
     // debugger
     event.preventDefault()
@@ -68,21 +56,21 @@ function makeForm() {
     createForm.innerHTML = ""
     createForm.innerHTML += `
     <form>
-    <label>Home Service Name:</label>
+    <label>Choose your Home Service:</label>
     <br>
     <select id="home-service-name" size=5>
-<option value="1">House Cleaning 
-<option value="2">Painting
-<option value="3">Floors/Sanding 
-<option value="4">Roofing
-<option value="5">Heating
-<option value="6">Electricity 
-<option value="7">Air Conditioning 
-<option value="8">Window Washing
-<option value="9">Carpet Cleaning
-<option value="10">Plumbing
-<option value="11">Landscaping 
-<option value="12">House Remodeling/Building Decks
+<option value="1">House Cleaning </option>
+<option value="2">Painting </option>
+<option value="3">Floors/Sanding </option>
+<option value="4">Roofing</option>
+<option value="5">Heating</option>
+<option value="6">Electricity </option>
+<option value="7">Air Conditioning </option>
+<option value="8">Window Washing</option>
+<option value="9">Carpet Cleaning</option>
+<option value="10">Plumbing</option>
+<option value="11">Landscaping </option>
+<option value="12">House Remodeling/Building Decks</option>
 </select>
 </option>
 <br>
@@ -106,60 +94,24 @@ document.getElementById("create-form").addEventListener("submit", createListing)
     // in that location in the innerHTML add string 
 }
 
-// function displayListing(){ // event handler //
-//     event.preventDefault()
-//     // debugger
-//     const listingsUL = document.querySelector("#main ul")
-//     listingsUL.innerHTML = ""
-//    const homeservice = event.target.querySelector("select").value
-   
-//     const listing = { 
-//     // types: document.querySelector('#types').value,
-//     ad_name: document.querySelector('#ad-name').value, //key value pair
-//     business_name: document.querySelector('#business-name').value,
-//     //add key
-//     home_service_id: homeservice
-// }
-// document.querySelector("add-listing-form").reset(); //remove
-//     const configObj = {
-//         method: 'POST',
-//         body: JSON.stringify(listing),
-//         headers: {
-//             'Content-Type': 'application/json', 
-//             'Accept': 'application/json'
-//         }
-//     }
-//     // debugger
-// //post request to db
-// //get what i need out of form, post request to backend API
 
-// fetch(BASE_URL, configObj) //fetch resources asynchronously across the network
-// //path to the resource you want to fetch
-// .then(response => response.json()) //returns a promise containing the HTTP response object (not json
-// //To extract the JSON body content from the response, we use the json() method )
-// .then(listing => { 
-//     console.log(listing)
-//     //logic
-//     //make nodes h3 set innertext 
-//     let displayads = main.innerHTML `
-//     <h3> ads here </h3>
-//     `
-    
-// })
-// }
-function clearUL(){
+function clearForm(){
     const listingsUL = document.querySelector("#main ul")
     listingsUL.innerHTML = ""
 
 }
 function createListing(){
     event.preventDefault()
-    clearUL()
+    // clearUL()
     const listing = { 
         ad_name: document.querySelector('#ad-name').value, 
     business_name: document.querySelector('#business-name').value,
     home_service_id: document.querySelector('#home-service-name').value
     }
+    // const homeservice = home_service.types
+    // const homeservice = {
+    //     home_service: document.querySelector("#home-service").value
+    // }
 
     const configObj = {
         method: 'POST',
@@ -173,43 +125,18 @@ function createListing(){
     fetch(BASE_URL, configObj)
     .then(response => response.json())
     .then(listing => {
-        console.log(listing)
-        const ls = new Listing(listing)
-        main.querySelector("ul").innerHTML += ls.renderListing()
-        attachClicksToLinks()
-        listingFormDiv.innerHTML = ""
-    }) 
-}
-
-function newUserForm() {
-     const userForm =    `<div class="fullscreen" id="new-user-form">
-                             <h2>Welcome traveler!</h2>
-                             <h2>What is your name?"</h2><br>
-                             <form>
-                                 <input type="text" id="username" username="username" required minlength="2" placeholder="Name" size="30">
-                                 <br><input type="submit" value="Lets go!">
-                             </form>
-                         </div>`;
-     const userName = document.getElementById("user-form");
-     userName.innerHTML = userForm;
-     document.getElementById("new-user-form").addEventListener("submit", createUser)
-    }
-    function createUser() {
-     event.preventDefault();
-        const user = {
-         username: document.getElementById("username").value,
-     }
-        fetch(BASE_URL + "/users", {
-         method: "POST",
-         body: JSON.stringify(user),
-         headers: { 
-                "Content-Type": "application/json",
-                "Accept": "application/json"
-            }
-     })
-     .then(response => response.json())
-     .then(user => {
-         document.getElementById("username").innerHTML += "Hello, " + `${user.username}` + "!";
+            main.querySelector("ul").innerHTML += "Here is your new listing: " + 
+            `
+            <h3>Home Service:</h3> 
+            <p>${listing.home_service_id} </p>
+            <h3>Ad name:</h3> 
+            <p>${listing.ad_name} </p>
+            <h3>Business name: </h3> 
+            <p>${listing.business_name}</p>
+            `
+            attachClicksToLinks()
+             listingFormDiv.innerHTML = ""
+ 
      })
      clearForm();
     }
