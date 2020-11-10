@@ -3,15 +3,22 @@ const BASE_URL = "http://localhost:3000/listings";
 const main = document.querySelector('#main');
 const listingFormDiv = document.getElementById("listing-form");
 const addForm = document.querySelector("#add-listing-form")
+const listings = document.getElementById("listings");
 
   //initialize Listing class
 //   const listing = new Listing()
 // ********* startup routine => make fetch to get initial data *********** //
 
 document.addEventListener('DOMContentLoaded', () => {
-    fetchAllListings()
+    // fetchAllListings() = immediately load all listings
     // debugger
+    listings.addEventListener("click", fetchAllListings);
     addForm.addEventListener("click", createListing);
+    document.querySelectorAll("#delete").forEach(listing => listing.addEventListener('click', deleteListing))
+
+
+    // addForm.addEventListener('click', deleteListing);
+    //addForm.addEventListener("click", categoryListing);
 
 });
 // ************************* requests to backend ************************ //
@@ -23,13 +30,15 @@ function fetchAllListings() {
      
             main.innerHTML += `
             <p>******************************************************************************************************************************************</p>
+            <h3>Home Service:</h3><p>${element.home_service.types} </p>
             <h3>Ad Name:</h3><p>${element.ad_name}</p>
             <h3>Business Name:</h3><p>${element.business_name}</p>
+            <input type="button" id="delete" value="Delete"/><br/>
             ` 
 // <h3>Home Service:</h3><p>${listing.home_service_id}</p>
 
         });
-        
+
         // attachClicksToLinks()
     })
 }
@@ -86,7 +95,7 @@ function makeForm() {
 <br>
 
 </input>
-<input type="submit">
+<input type="submit"></input>
 </form>
 ` 
 document.getElementById("create-form").addEventListener("submit", createListing) //triggers that function
@@ -108,6 +117,12 @@ function createListing(){
     business_name: document.querySelector('#business-name').value,
     home_service_id: document.querySelector('#home-service-name').value
     }
+
+//     del.style.textDecoration = 'none';
+//    del.innerHTML = ""
+//     del.innerHTML = 'Remove this listing?';
+//     del.style.color = 'white';
+//     del.style.backgroundColor = 'blue';
     // const homeservice = home_service.types
     // const homeservice = {
     //     home_service: document.querySelector("#home-service").value
@@ -128,11 +143,12 @@ function createListing(){
             main.querySelector("ul").innerHTML += "Here is your new listing: " + 
             `
             <h3>Home Service:</h3> 
-            <p>${listing.home_service_id} </p>
+            <p>${listing.home_service.types} </p>
             <h3>Ad name:</h3> 
             <p>${listing.ad_name} </p>
             <h3>Business name: </h3> 
             <p>${listing.business_name}</p>
+            
             `
             attachClicksToLinks()
              listingFormDiv.innerHTML = ""
@@ -140,3 +156,32 @@ function createListing(){
      })
      clearForm();
     }
+
+ 
+// ************************* delete method ************************ //
+function deleteListing(){
+            
+    event.preventDefault()
+   
+    const configObj = {
+        method: 'DELETE',
+        // dataType: 'json',
+        // processData: false
+        headers:{
+            'Content-Type': 'application/json',
+            'Accept':'application/json'
+        }
+    }
+        
+    fetch(BASE_URL + `/${event.target.dataset.id}`,configObj)
+    .then(event.target.parentElement.remove())
+}
+  
+
+    // function categoryListing() {
+    //     <select id="categories" name="categories">
+    //               <option value="1">Verb</option>
+    //               <option value="2">Food</option>
+    //               <option value="3">Conversation</option>
+    //             </select>
+    // }

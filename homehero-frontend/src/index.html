@@ -16,11 +16,18 @@
 <div id="create-form"></div> 
 
 
-<a id="add-listing-form" href="#" onclick="makeForm()"><h2>Create your Listing here</a></h2>
+
+<button id="add-listing-form" class="button button1" onclick="makeForm()">Create your Listing here</button>
+
+
 
 <!--anchor tag = when we click it show me form to make a new listing-->
+<p>🏘️🏘️🏘️🏘️🏘️🏘️🏘️🏘️🏘️🏘️🏘️🏘️🏘️🏘️🏘️🏘️🏘️🏘️🏘️🏘️🏘️🏘️🏘️🏘️🏘️🏘🏘🏘️🏘️🏘️🏘️🏘️🏘️🏘️🏘️🏘️🏘️</p>
+<h1>Find a listing that's right for you.</h1>
+<p>🏘️🏘️🏘️🏘️🏘️🏘️🏘️🏘️🏘️🏘️🏘️🏘️🏘️🏘️🏘️🏘️🏘️🏘️🏘️🏘️🏘️🏘️🏘️🏘️🏘️🏘🏘🏘️🏘️🏘️🏘️🏘️🏘️🏘️🏘️🏘️🏘️</p>
 
-<a id="listings" href="#"><h2>Listings</a></h2>
+
+<button id="listings" class="button button1">Listings</button>
 <!--anchor tag = navigation when we click it shows me all my listings collection-->
 
 <hr>
@@ -43,6 +50,8 @@
 
 <head>
     <style>
+
+
     body {background-color:#4293f1}
     
     h1 {
@@ -57,10 +66,41 @@
       font-size: 300%;
     
     }
+
+    .button {
+  background-color: #008cff; /* Green */
+  border: none;
+  color: white;
+  padding: 16px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  transition-duration: 0.4s;
+  cursor: pointer;
+}
+
+.button1 {
+  background-color: white; 
+  color: black; 
+  border: 2px solid #ffffff;
+}
+
+.button1:hover {
+  background-color: #0077ff;
+  color: white;
+}
+
+
+
+</style>
     </style>
     </head>
     <ul>
+       
     <script src="src/index.js"></script>
+    <script src="src/listing.js"></script>
     <body>
     
 
