@@ -6,12 +6,12 @@ Rails.application.routes.draw do
 #resources:listings, only: :index 
 
  post '/listings'  => 'listings#create' 
-  get '/listings'  => 'listings#create' 
   get '/listings/:id'  => 'listings#show'
   #get '/listings/:id', to: 'listings#show'
   get '/listings:id/edit'  => 'listings#edit' 
   get '/listings/:id'  => 'listings#update' 
-  get '/listings:id'  => 'listings#destroy' 
+  delete '/listings/:id', to: 'listings#destroy'
+  
 
 
 

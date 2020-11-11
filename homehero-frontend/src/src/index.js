@@ -14,13 +14,12 @@ document.addEventListener('DOMContentLoaded', () => {
     // debugger
     listings.addEventListener("click", fetchAllListings);
     addForm.addEventListener("click", createListing);
-    document.querySelectorAll("#delete").forEach(listing => listing.addEventListener('click', removeListing))
-
-
-    // addForm.addEventListener('click', deleteListing);
-    //addForm.addEventListener("click", categoryListing);
+    pullFromDB()
+   
 
 });
+document.querySelectorAll("#delete").forEach(listing => listing.addEventListener('click', removeListing))
+
 // ************************* requests to backend ************************ //
 // Fetch Request to GET listings
 function fetchAllListings() { 
@@ -34,10 +33,8 @@ function fetchAllListings() {
             <h3>Home Service:</h3><p>${element.home_service.types} </p>
             <h3>Ad Name:</h3><p>${element.ad_name}</p>
             <h3>Business Name:</h3><p>${element.business_name}</p>
-            <input type="button" id="delete" value="Delete"/><br/>
+            <input type="button" id="delete" onClick="removeListing()" value="Delete"/><br/>
             ` 
-// <h3>Home Service:</h3><p>${listing.home_service_id}</p>
-
         });
      //Add listing to the DOM
 
@@ -136,42 +133,62 @@ function createListing(){
     }
     
     fetch(BASE_URL, configObj)
-    .then(response => response.json())
-    .then(listing => {
-        // const deleteButton = document.createElement("#delete")
+    // .then(response => response.json())
+    // .then(listing => {
+
+
+    //     debugger
+    //     // const deleteButton = document.createElement("#delete")
     
-            main.querySelector("ul").innerHTML += "Here is your new listing: " + 
-            `
-            <h3>Home Service:</h3> 
-            <p>${listing.home_service.types} </p>
-            <h3>Ad name:</h3> 
-            <p>${listing.ad_name} </p>
-            <h3>Business name: </h3> 
-            <p>${listing.business_name}</p>
+    //         main.querySelector("ul").innerHTML += "Here is your new listing: " + 
+    //         `
+    //         <div id=${listing.id}>
+    //         <h3>Home Service:</h3> 
+    //         <p>${listing.home_service.types} </p>
+    //         <h3>Ad name:</h3> 
+    //         <p>${listing.ad_name} </p>
+    //         <h3>Business name: </h3> 
+    //         <p>${listing.business_name}</p>
+    //         </div>
             
-            `
-            // attachClicksToLinks() 
-     })
+    //         `
+    //         // attachClicksToLinks() 
+    //  })
      clearForm();
     }
 
 // ************************* //FETCH to Delete listing ************************ //
-function removeListing(event){
-            
+function removeListing(){
+    //   debugger
+    let listingId = event.target.parentElement.id      
     event.preventDefault()
    
     const configObj = {
         method: 'DELETE',
-        // dataType: 'json',
-        // processData: false
         headers:{
             'Content-Type': 'application/json',
             'Accept':'application/json'
         }
     }
         
-    fetch(BASE_URL + `/${event.target.dataset.id}`,configObj)
-        .then(event.target.parentElement.remove())
-
+    fetch(BASE_URL + `/${listingId}`,configObj)
+    event.target.parentElement.remove()
+    
 }
+function pullFromDB(){
+    fetch(`${BASE_URL}`)
+    .then(res => res.json())
+    .then(listings => {
+        listings.forEach(listing => {
+            
+            let id = listing.id
+            let ad_name = listing.ad_name
+            let business_name = listing.business_name
+            let home_service_id = listing.home_service_id
 
+            let l = new Listing(id, ad_name, business_name, home_service_id)
+            l.displayFromDb()
+
+        })
+    })
+}
