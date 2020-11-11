@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // debugger
     listings.addEventListener("click", fetchAllListings);
     addForm.addEventListener("click", createListing);
-    document.querySelectorAll("#delete").forEach(listing => listing.addEventListener('click', deleteListing))
+    document.querySelectorAll("#delete").forEach(listing => listing.addEventListener('click', removeListing))
 
 
     // addForm.addEventListener('click', deleteListing);
@@ -22,6 +22,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 });
 // ************************* requests to backend ************************ //
+// Fetch Request to GET listings
 function fetchAllListings() { 
     fetch(BASE_URL)    // get request
     .then(response => response.json())
@@ -38,6 +39,9 @@ function fetchAllListings() {
 // <h3>Home Service:</h3><p>${listing.home_service_id}</p>
 
         });
+     //Add listing to the DOM
+
+        // getListingsForDropdown(listing)
 
         // attachClicksToLinks()
     })
@@ -70,7 +74,7 @@ function makeForm() {
     <select id="home-service-name" size=5>
 <option value="1">House Cleaning </option>
 <option value="2">Painting </option>
-<option value="3">Floors/Sanding </option>
+<option value="3">Floors & Sanding </option>
 <option value="4">Roofing</option>
 <option value="5">Heating</option>
 <option value="6">Electricity </option>
@@ -79,7 +83,7 @@ function makeForm() {
 <option value="9">Carpet Cleaning</option>
 <option value="10">Plumbing</option>
 <option value="11">Landscaping </option>
-<option value="12">House Remodeling/Building Decks</option>
+<option value="12">House Remodeling & Deck Construction</option>
 </select>
 </option>
 <br>
@@ -109,6 +113,8 @@ function clearForm(){
     listingsUL.innerHTML = ""
 
 }
+
+// Fetch request to POST new listings
 function createListing(){
     event.preventDefault()
     // clearUL()
@@ -118,15 +124,7 @@ function createListing(){
     home_service_id: document.querySelector('#home-service-name').value
     }
 
-//     del.style.textDecoration = 'none';
-//    del.innerHTML = ""
-//     del.innerHTML = 'Remove this listing?';
-//     del.style.color = 'white';
-//     del.style.backgroundColor = 'blue';
-    // const homeservice = home_service.types
-    // const homeservice = {
-    //     home_service: document.querySelector("#home-service").value
-    // }
+
 
     const configObj = {
         method: 'POST',
@@ -140,6 +138,8 @@ function createListing(){
     fetch(BASE_URL, configObj)
     .then(response => response.json())
     .then(listing => {
+        // const deleteButton = document.createElement("#delete")
+    
             main.querySelector("ul").innerHTML += "Here is your new listing: " + 
             `
             <h3>Home Service:</h3> 
@@ -150,16 +150,13 @@ function createListing(){
             <p>${listing.business_name}</p>
             
             `
-            attachClicksToLinks()
-             listingFormDiv.innerHTML = ""
- 
+            // attachClicksToLinks() 
      })
      clearForm();
     }
 
- 
-// ************************* delete method ************************ //
-function deleteListing(){
+// ************************* //FETCH to Delete listing ************************ //
+function removeListing(event){
             
     event.preventDefault()
    
@@ -174,14 +171,7 @@ function deleteListing(){
     }
         
     fetch(BASE_URL + `/${event.target.dataset.id}`,configObj)
-    .then(event.target.parentElement.remove())
-}
-  
+        .then(event.target.parentElement.remove())
 
-    // function categoryListing() {
-    //     <select id="categories" name="categories">
-    //               <option value="1">Verb</option>
-    //               <option value="2">Food</option>
-    //               <option value="3">Conversation</option>
-    //             </select>
-    // }
+}
+
