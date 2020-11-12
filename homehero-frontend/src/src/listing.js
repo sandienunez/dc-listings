@@ -8,12 +8,13 @@ class Listing {
 
     displayFromDb(){
         let listingLocation  = document.getElementById("main")
+        const serviceName = document.querySelector("#home-service-name").options[this.home_service_id - 1].text
         listingLocation.innerHTML += `
         ============<br>
         <div id =${this.id}>
         ${this.ad_name}<br>
         ${this.business_name}<br>
-        ${this.home_service_id}<br>
+        ${this.serviceName}<br>
         <input type="button" id="delete" onClick="removeListing()" value="Delete"/><br/>
 
         <div>
