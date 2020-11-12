@@ -12,9 +12,11 @@ const listings = document.getElementById("listings");
 document.addEventListener('DOMContentLoaded', () => {
     // fetchAllListings() = immediately load all listings
     // debugger
-    listings.addEventListener("click", fetchAllListings);
-    addForm.addEventListener("click", createListing);
-    pullFromDB()
+    document.getElementById("create-form").addEventListener("submit", createListing)
+    listings.addEventListener("click",  pullFromDB());
+    // addForm.addEventListener("click", createListing);
+   
+ 
    
 
 });
@@ -22,27 +24,27 @@ document.querySelectorAll("#delete").forEach(listing => listing.addEventListener
 
 // ************************* requests to backend ************************ //
 // Fetch Request to GET listings
-function fetchAllListings() { 
-    fetch(BASE_URL)    // get request
-    .then(response => response.json())
-    .then(listings => {
-        listings.forEach(element => { //iterate through collection of listings
+// function fetchAllListings() { 
+//     fetch(BASE_URL)    // get request
+//     .then(response => response.json())
+//     .then(listings => {
+//         listings.forEach(element => { //iterate through collection of listings
      
-            main.innerHTML += `
-            <p>******************************************************************************************************************************************</p>
-            <h3>Home Service:</h3><p>${element.home_service.types} </p>
-            <h3>Ad Name:</h3><p>${element.ad_name}</p>
-            <h3>Business Name:</h3><p>${element.business_name}</p>
-            <input type="button" id="delete" onClick="removeListing()" value="Delete"/><br/>
-            ` 
-        });
-     //Add listing to the DOM
+//             main.innerHTML += `
+//             <p>******************************************************************************************************************************************</p>
+//             <h3>Home Service:</h3><p>${element.home_service.types} </p>
+//             <h3>Ad Name:</h3><p>${element.ad_name}</p>
+//             <h3>Business Name:</h3><p>${element.business_name}</p>
+//             <input type="button" id="delete" onClick="removeListing()" value="Delete"/><br/>
+//             ` 
+//         });
+//      //Add listing to the DOM
 
-        // getListingsForDropdown(listing)
+//         // getListingsForDropdown(listing)
 
-        // attachClicksToLinks()
-    })
-}
+//         // attachClicksToLinks()
+//     })
+// }
 
 // ************************* helpers for generating HTML and adding event listeners ************************ //
 function makeListingObjects(listing) {
@@ -68,8 +70,8 @@ function makeForm() {
     <form>
     <label>Choose your Home Service:</label>
     <br>
-    <select id="home-service-name" size=5>
-<option value="1">House Cleaning </option>
+    <select id="service-list" size=5>
+<option value="1"><br> House Cleaning </br> </option>
 <option value="2">Painting </option>
 <option value="3">Floors & Sanding </option>
 <option value="4">Roofing</option>
@@ -99,7 +101,8 @@ function makeForm() {
 <input type="submit"></input>
 </form>
 ` 
-document.getElementById("create-form").addEventListener("submit", createListing) //triggers that function
+
+ //triggers that function
 // debugger
     // in that location in the innerHTML add string 
 }
@@ -118,7 +121,7 @@ function createListing(){
     const listing = { 
         ad_name: document.querySelector('#ad-name').value, 
     business_name: document.querySelector('#business-name').value,
-    home_service_id: document.querySelector('#home-service-name').value
+    home_service_id: document.querySelector('#home-service-id').value
     }
 
 

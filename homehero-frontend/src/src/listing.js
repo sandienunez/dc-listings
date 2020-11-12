@@ -8,7 +8,12 @@ class Listing {
 
     displayFromDb(){
         let listingLocation  = document.getElementById("main")
-        const serviceName = document.querySelector("#home-service-name").options[this.home_service_id - 1].text
+      
+        let serviceList = document.querySelector("#service-list").value
+        // debugger
+        let selectedText = serviceList.options[serviceList.selectedIndex].text;
+        // const serviceList = document.querySelector("#home-service-name").options[this.home_service_id - 1].text
+        
         listingLocation.innerHTML += `
         ============<br>
         <div id =${this.id}>
