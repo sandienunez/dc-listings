@@ -15,7 +15,8 @@ class Listing {
         // let selectedText = serviceList.options[serviceList.selectedIndex].text;
         // const serviceList = document.querySelector("#home-service-name").options[this.home_service_id - 1].text
         
-        listingLocation.innerHTML += `
+        listingLocation.innerHTML += 
+        `
         ============<br>
         <div id =${this.id}>
         ${this.ad_name}<br>

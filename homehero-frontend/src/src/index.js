@@ -3,8 +3,8 @@ const BASE_URL = "http://localhost:3000/listings";
 const main = document.querySelector('#main');
 const listingFormDiv = document.getElementById("listing-form");
 const addForm = document.querySelector("#add-listing-form")
-const listings = document.getElementById("listings");
-
+const showListingsButton = document.getElementById("listings");
+// debugger 
   //initialize Listing class
 //   const listing = new Listing()
 // ********* startup routine => make fetch to get initial data *********** //
@@ -12,10 +12,10 @@ const listings = document.getElementById("listings");
 document.addEventListener('DOMContentLoaded', () => {
     // fetchAllListings() = immediately load all listings
     // debugger
-    attachClicksToLinks();
     document.getElementById("create-form").addEventListener("submit", createListing);
-    listings.addEventListener("click", pullFromDB());
-
+    showListingsButton.addEventListener("click", pullFromDB());
+    // showListingsButton.addEventListener("click", ()=>{console.log("I was clicked")})
+// debugger
     // addForm.addEventListener("click", createListing);
     // pullFromDB();
 
@@ -58,12 +58,12 @@ function makeListingObjects(listing) {
 }
    // html string with interpolation, give anchor tags id, interpolate stuff about listing
 
-function attachClicksToLinks(){
-    // debugger
-    document.getElementById("delete").forEach(listings => listings.addEventListener('click', removeListing))
+// function attachClicksToLinks(){
+//     debugger
+//     document.getElementById("delete").forEach(listings => listings.addEventListener('click', removeListing))
 
 
-}
+// }
 
 function makeForm() {
     // debugger
@@ -174,13 +174,14 @@ function removeListing(){
     }
         
     fetch(BASE_URL + `/${listingId}`,configObj)
-        debugger
-        // .then(event.target.parentElement.remove())
+        // debugger
+        event.target.parentElement.remove()
     
 }
 
 
 function pullFromDB(){
+    console.log("I was clicked")
     // event.preventDefault()
    let listingLocation = document.getElementById("main")
     listingLocation.innerHTML = ""
@@ -202,5 +203,7 @@ function pullFromDB(){
             l.displayFromDb()
 
         })
+        // attachClicksToLinks();
     })
 }
+//     document.getElementById("delete").forEach(listings => listings.addEventListener('click', removeListing))
