@@ -1,6 +1,6 @@
 class ListingsController < ApplicationController
     def index
-        listings = Listing.all
+        listings = Listing.all.reverse
         render json: listings 
       end
 
@@ -11,10 +11,12 @@ class ListingsController < ApplicationController
     
       def create
         listing = Listing.new(listing_params)
-        # binding.pry
+       
         # listing = Listing.create(listing_params)
         if listing.save
+      
             render json: listing, status: :accepted
+            #  binding.pry
         else  
             render json: {errors: listing.errors.full_messages}
         end
@@ -26,7 +28,8 @@ class ListingsController < ApplicationController
       end
     
       def destroy
-       listing = Listing.find(params[:id])
+       listing = Listing.find_by_id(params[:id])
+      #  binding.pry
         listing.destroy
       end 
 
