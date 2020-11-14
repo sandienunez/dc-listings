@@ -98,13 +98,22 @@ function makeForm() {
 <input type="text" id="business-name">
 <br>
 <br>
-<label>Upload Company Logo Image:</label>
+<label>Upload Company Logo:</label>
 <br>
 <input type="text" id="logo-image">
 <br>
+<label>Write your Ad Message here:</label>
+<br>
+<input type="text" id="ad-message">
 </input>
 <br>
-<input type="submit"></input>
+<label>Upload an accompanying image for your Ad:</label>
+<br>
+<input type="text" id="ad-image">
+<br>
+<p><span id="home-service-updated-at" </span></p>
+<br>
+<input type="submit"></p>
 </form>
 </div>
 ` 
@@ -122,6 +131,7 @@ function clearForm(){
 
 }
 
+
 // Fetch request to POST new listings
 function createListing(){
     event.preventDefault()
@@ -131,8 +141,13 @@ function createListing(){
         ad_name: document.getElementById('ad-name').value, 
     business_name: document.getElementById('business-name').value,
     home_service_id: document.getElementById('service-list').value,
-    logo_image: document.getElementById('logo-image').value
-    }
+    logo_image: document.getElementById('logo-image').value,
+    ad_message: document.getElementById('ad-message').value,
+    ad_image: document.getElementById('ad-image').value,
+    home_service_updated_at: document.getElementById('home-service-updated-at').value  
+
+    // home_service_updated_at: new Date()
+ }
 
     // debugger
 
@@ -150,6 +165,8 @@ function createListing(){
         .then(listings => {
             pullFromDB(listings)
             // console.log(listings)
+            // let dateStr = JSON.parse(json);
+            // let date = new Date(dateStr); 
         })
 
      clearForm();
@@ -198,7 +215,10 @@ function pullFromDB(){
             let home_service_id = listing.home_service_id
             let home_service_type = listing.home_service.types 
             let logo_image = listing.logo_image
-            let l = new Listing(id, ad_name, business_name, home_service_id, home_service_type, logo_image)
+            let ad_message = listing.ad_message
+            let ad_image = listing.ad_image 
+            let home_service_updated_at = new Date(listing.home_service.updated_at).toLocaleTimeString('en-US', { weekday: 'long', day: 'numeric', month: 'long', year : 'numeric', hour: 'numeric', hour12: true, minute: 'numeric' })
+            let l = new Listing(id, ad_name, business_name, home_service_id, home_service_type, logo_image, ad_message, ad_image, home_service_updated_at)
             // debugger
             l.displayFromDb()
 

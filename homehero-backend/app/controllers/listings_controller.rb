@@ -33,6 +33,6 @@ class ListingsController < ApplicationController
 private
 
   def listing_params
-        params.require(:listing).permit(:ad_name, :business_name, :home_service_id, :logo_image)
+        params.require(:listing).permit(:ad_name, :business_name, :home_service_id, :logo_image, :ad_message, :ad_image, :updated_at)
   end
 end 
