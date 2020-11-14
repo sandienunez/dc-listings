@@ -2,12 +2,12 @@ class ListingsController < ApplicationController
     def index
         listings = Listing.all.reverse
         render json: listings 
-      end
+    end
 
-      def show
-        listing = Listing.find(params[:id])
-        render json: listing
-      end
+    def show
+      listing = Listing.find(params[:id])
+      render json: listing
+    end
     
       def create
         listing = Listing.new(listing_params)
@@ -33,6 +33,6 @@ class ListingsController < ApplicationController
 private
 
   def listing_params
-        params.require(:listing).permit(:ad_name, :business_name, :home_service_id, :logo_image, :add_message, :add_image)
+        params.require(:listing).permit(:ad_name, :business_name, :home_service_id, :logo_image)
   end
 end 

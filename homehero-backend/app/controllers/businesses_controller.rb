@@ -5,25 +5,25 @@ class BusinessesController < ApplicationController
         render json: businesses
     end
     
-    def create
-      new_business = Business.new(business_params)
-        if business.save 
-          render json: business, status: :accepted
-            #binding.pry
-        else 
-          render json: {errors: business.errors.full_messages}
-        end
-    end
+    # def create
+    #   new_business = Business.new(business_params)
+    #     if business.save 
+    #       render json: business, status: :accepted
+    #         #binding.pry
+    #     else 
+    #       render json: {errors: business.errors.full_messages}
+    #     end
+    # end
 
-    def update
-      business = Business.find(params[:id])
-      render json: business
-    end
+    # def update
+    #   business = Business.find(params[:id])
+    #   render json: business
+    # end
 
-    def destroy
-      business = Business.find(params[:id])
-      business.destroy 
-    end
+    # def destroy
+    #   business = Business.find(params[:id])
+    #   business.destroy 
+    # end
     
 end 
 

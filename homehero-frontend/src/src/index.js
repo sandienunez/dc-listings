@@ -50,20 +50,13 @@ document.addEventListener('DOMContentLoaded', () => {
 // }
 
 // ************************* helpers for generating HTML and adding event listeners ************************ //
-function makeListingObjects(listing) {
-    return (`
-    <h3>${listing.ad_name}<h3>
-    <p>${listing.business_name}</p>
-    `)
-}
-   // html string with interpolation, give anchor tags id, interpolate stuff about listing
-
-// function attachClicksToLinks(){
-//     debugger
-//     document.getElementById("delete").forEach(listings => listings.addEventListener('click', removeListing))
-
-
+// function makeListingObjects(listing) {
+//     return (`
+//     <h3>${listing.ad_name}<h3>
+//     <p>${listing.business_name}</p>
+//     `)
 // }
+   // html string with interpolation, give anchor tags id, interpolate stuff about listing
 
 function makeForm() {
     // debugger
@@ -105,7 +98,7 @@ function makeForm() {
 <input type="text" id="business-name">
 <br>
 <br>
-<label> Upload Company Logo Image:</label>
+<label>Upload Company Logo Image:</label>
 <br>
 <input type="text" id="logo-image">
 <br>
@@ -207,7 +200,7 @@ function pullFromDB(){
             let logo_image = listing.logo_image
             let l = new Listing(id, ad_name, business_name, home_service_id, home_service_type, logo_image)
             // debugger
-            l.displayFromDB()
+            l.displayFromDb()
 
         })
     })

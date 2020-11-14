@@ -1,5 +1,5 @@
 class Listing {
-    constructor(id,ad_name,business_name,home_service_id, home_service_type, logo_image_url) { //listing object from json
+    constructor(id,ad_name,business_name,home_service_id, home_service_type, logo_image) { //listing object from json
         this.id = id
         this.ad_name = ad_name
         this.business_name = business_name
@@ -8,7 +8,7 @@ class Listing {
         this.logo_image = logo_image
     }
 
-    displayFromDB(){
+    displayFromDb(){
         let listingLocation  = document.getElementById("main")
     //   debugger
         let serviceList = document.getElementById("service-list")
