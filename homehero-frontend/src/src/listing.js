@@ -5,7 +5,7 @@ class Listing {
         this.business_name = business_name
         this.home_service_id = home_service_id
         this.home_service_type = home_service_type 
-        this.logo_image_url = logo_image_url
+        this.logo_image = logo_image
     }
 
     displayFromDb(){
@@ -23,7 +23,7 @@ class Listing {
         <h3>Ad Name:</h3><p>${this.ad_name} </p>
         <h3>Business Name:</h3><p>${this.business_name} </p>
         <h3>Home Service:</h3><p> ${this.home_service_type}</p>
-        <h3>Logo Image:</h3><p> ${this.logo_image_url}</p>
+        <h3>Logo Image:</h3><p> ${this.logo_image}</p>
 
         <input type="button" id="delete" onclick="removeListing()" value="Delete"/><br/>
         <br>
