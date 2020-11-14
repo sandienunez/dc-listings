@@ -8,7 +8,7 @@ class Listing {
         this.logo_image = logo_image
     }
 
-    displayFromDb(){
+    displayFromDB(){
         let listingLocation  = document.getElementById("main")
     //   debugger
         let serviceList = document.getElementById("service-list")

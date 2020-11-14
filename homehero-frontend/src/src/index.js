@@ -207,7 +207,7 @@ function pullFromDB(){
             let logo_image = listing.logo_image
             let l = new Listing(id, ad_name, business_name, home_service_id, home_service_type, logo_image)
             // debugger
-            l.displayFromDb()
+            l.displayFromDB()
 
         })
     })
