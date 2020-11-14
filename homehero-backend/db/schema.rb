@@ -16,10 +16,10 @@ ActiveRecord::Schema.define(version: 2020_11_05_194523) do
     t.string "name_of_business"
     t.string "household_service"
     t.text "business_hours"
-    t.string "covid_policy"
+    t.text "covid_policy"
     t.string "yelp_review_url"
     t.text "mission_text"
-    t.string "contact_info"
+    t.text "contact_info"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -33,10 +33,9 @@ ActiveRecord::Schema.define(version: 2020_11_05_194523) do
   create_table "listings", force: :cascade do |t|
     t.string "ad_name"
     t.string "business_name"
-    t.string "logo_image_url"
-    t.string "location"
-    t.string "add_message"
-    t.string "add_image_url"
+    t.string "logo_image"
+    t.text "add_message"
+    t.string "add_image"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "home_service_id"
