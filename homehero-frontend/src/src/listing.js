@@ -17,15 +17,19 @@ class Listing {
         
         listingLocation.innerHTML += 
         `
-        ============<br>
         <div id =${this.id}>
-        ${this.ad_name}<br>
-        ${this.business_name}<br>
-        ${this.home_service_type}<br>
+        <p>******************************************************************************************************************************************</p>
+        <h3>Ad Name:</h3><p>${this.ad_name} </p>
+        <h3>Business Name:</h3><p>${this.business_name} </p>
+        <h3>Home Service:</h3><p> ${this.home_service_type}</p>
         <input type="button" id="delete" onclick="removeListing()" value="Delete"/><br/>
-
+        <br>
         <div>
         `
         // debugger
     }
 }
+
+//             <h3>Home Service:</h3><p>${this.ad_name} </p>
+//             <h3>Ad Name:</h3><p>${element.ad_name}</p>
+//             <h3>Business Name:</h3><p>${element.business_name}</p>
