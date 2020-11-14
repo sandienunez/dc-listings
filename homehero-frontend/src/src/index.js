@@ -12,7 +12,7 @@ const showListingsButton = document.getElementById("listings");
 document.addEventListener('DOMContentLoaded', () => {
     // fetchAllListings() = immediately load all listings
     // debugger
-    document.getElementById("create-form").addEventListener("submit", createListing);
+    document.getElementById("create-listing-form").addEventListener("submit", createListing);
     showListingsButton.addEventListener("click", pullFromDB());
     // showListingsButton.addEventListener("click", ()=>{console.log("I was clicked")})
 // debugger
@@ -68,7 +68,7 @@ function makeListingObjects(listing) {
 function makeForm() {
     // debugger
     event.preventDefault()
-    let createForm = document.getElementById("create-form")
+    let createForm = document.getElementById("create-listing-form")
     //in our index.html =saving location into a variable createForm, that location is saved
     //<!-- <button class=”submit”>Create</button> --> 
     createForm.innerHTML = ""
@@ -96,14 +96,17 @@ function makeForm() {
 <br>
 <br>
 <label>Ad Name:</label>
+<br>
 <input type="text" id="ad-name">
 <br>
 <br>
 <label>Business Name:</label>
+<br>
 <input type="text" id="business-name">
 <br>
 <br>
 <label>Insert Company Logo Image URL :</label>
+<br>
 <input type="text" id="logo-image-url">
 <br>
 </input>
@@ -120,7 +123,7 @@ function makeForm() {
 
 
 function clearForm(){
-    let listingsUL = document.getElementById("create-form")
+    let listingsUL = document.getElementById("create-listing-form")
     // debugger
     listingsUL.innerHTML = ""
 
