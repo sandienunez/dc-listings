@@ -210,7 +210,5 @@ function pullFromDB(){
             l.displayFromDb()
 
         })
-        // attachClicksToLinks();
     })
 }
-//     document.getElementById("delete").forEach(listings => listings.addEventListener('click', removeListing))

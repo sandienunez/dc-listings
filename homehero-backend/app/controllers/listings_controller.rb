@@ -11,16 +11,13 @@ class ListingsController < ApplicationController
     
       def create
         listing = Listing.new(listing_params)
-       
-        # listing = Listing.create(listing_params)
-        if listing.save
-      
+          if listing.save
             render json: listing, status: :accepted
             #  binding.pry
-        else  
+          else  
             render json: {errors: listing.errors.full_messages}
-        end
-       end
+          end
+      end
 
       def update
         listing = Listing.find(params[:id])
