@@ -102,10 +102,12 @@ function makeForm() {
 <label>Business Name:</label>
 <input type="text" id="business-name">
 <br>
-
 <br>
-
+<label>Insert Company Logo Image URL :</label>
+<input type="text" id="logo-image-url">
+<br>
 </input>
+<br>
 <input type="submit"></input>
 </form>
 </div>
@@ -132,7 +134,8 @@ function createListing(){
     const listing = { 
         ad_name: document.getElementById('ad-name').value, 
     business_name: document.getElementById('business-name').value,
-    home_service_id: document.getElementById('service-list').value
+    home_service_id: document.getElementById('service-list').value,
+    logo_image_url: document.getElementById('logo-image-url').value
     }
 
     // debugger
@@ -181,7 +184,7 @@ function removeListing(){
 
 
 function pullFromDB(){
-    console.log("I was clicked")
+    // console.log("I was clicked")
     // event.preventDefault()
    let listingLocation = document.getElementById("main")
     listingLocation.innerHTML = ""
@@ -198,7 +201,8 @@ function pullFromDB(){
             let business_name = listing.business_name
             let home_service_id = listing.home_service_id
             let home_service_type = listing.home_service.types 
-            let l = new Listing(id, ad_name, business_name, home_service_id, home_service_type)
+            let logo_image_url = listing.logo_image_url
+            let l = new Listing(id, ad_name, business_name, home_service_id, home_service_type, logo_image_url)
             // debugger
             l.displayFromDb()
 

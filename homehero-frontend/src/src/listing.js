@@ -1,10 +1,11 @@
 class Listing {
-    constructor(id,ad_name,business_name,home_service_id, home_service_type) { //listing object from json
+    constructor(id,ad_name,business_name,home_service_id, home_service_type, logo_image_url) { //listing object from json
         this.id = id
         this.ad_name = ad_name
-        this.business_name =business_name
-        this.home_service_id =home_service_id
+        this.business_name = business_name
+        this.home_service_id = home_service_id
         this.home_service_type = home_service_type 
+        this.logo_image_url = logo_image_url
     }
 
     displayFromDb(){
@@ -22,6 +23,8 @@ class Listing {
         <h3>Ad Name:</h3><p>${this.ad_name} </p>
         <h3>Business Name:</h3><p>${this.business_name} </p>
         <h3>Home Service:</h3><p> ${this.home_service_type}</p>
+        <h3>Logo Image:</h3><p> ${this.logo_image_url}</p>
+
         <input type="button" id="delete" onclick="removeListing()" value="Delete"/><br/>
         <br>
         <div>
