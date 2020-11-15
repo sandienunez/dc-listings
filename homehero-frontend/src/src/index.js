@@ -100,20 +100,29 @@ function makeForm() {
 <br>
 <label>Upload Company Logo:</label>
 <br>
-<input type="text" id="logo-image">
+<input type="file" id="logo-image">
+<br>
+<br>
+<br>
+<label>Test Logo:</label>
+<br>
+<input type="file" id="test-image">
+<br>
 <br>
 <label>Write your Ad Message here:</label>
 <br>
 <input type="text" id="ad-message">
-</input>
+<br>
 <br>
 <label>Upload an accompanying image for your Ad:</label>
 <br>
-<input type="text" id="ad-image">
+<input type="file" id="ad-image">
+<br>
 <br>
 <p><span id="home-service-updated-at" </span></p>
 <br>
 <input type="submit"></p>
+</input>
 </form>
 </div>
 ` 
@@ -123,7 +132,30 @@ function makeForm() {
     // in that location in the innerHTML add string 
 }
 
+function showMyImage(fileInput) {
+    var files = fileInput.files;
+      //console.log(files);
+      for (var i = 0; i < files.length; i++) {           
+          var file = files[i];
+          console.log(file.name);
+          var imageType = /image.*/;     
+          if (!file.type.match(imageType)) {
+              continue;
+          }           
+          var img=document.getElementById("preview");            
+          img.file = file;    
+          var reader = new FileReader();
+          reader.onload = (function(aImg) { 
+              return function(e) { 
+                  aImg.src = e.target.result; 
+              }; 
+          })(img);
+          reader.readAsDataURL(file);
+         preview.style.display = 'block';
+          //$("#banner_name").text(file.name);
 
+      }
+}
 function clearForm(){
     let listingsUL = document.getElementById("create-listing-form")
     // debugger
@@ -144,7 +176,8 @@ function createListing(){
     logo_image: document.getElementById('logo-image').value,
     ad_message: document.getElementById('ad-message').value,
     ad_image: document.getElementById('ad-image').value,
-    home_service_updated_at: document.getElementById('home-service-updated-at').value  
+    home_service_updated_at: document.getElementById('home-service-updated-at').value,
+    test_image: document.getElementById('test-image').value,
 
     // home_service_updated_at: new Date()
  }
