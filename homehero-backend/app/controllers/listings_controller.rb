@@ -11,9 +11,10 @@ class ListingsController < ApplicationController
     
       def create
         listing = Listing.new(listing_params)
+          # binding.pry
           if listing.save
             render json: listing, status: :accepted
-            #  binding.pry
+           
           else  
             render json: {errors: listing.errors.full_messages}
           end

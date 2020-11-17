@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_14_220725) do
+ActiveRecord::Schema.define(version: 2020_11_17_143533) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -33,18 +33,6 @@ ActiveRecord::Schema.define(version: 2020_11_14_220725) do
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
 
-  create_table "businesses", force: :cascade do |t|
-    t.string "name_of_business"
-    t.string "household_service"
-    t.text "business_hours"
-    t.text "covid_policy"
-    t.string "yelp_review_url"
-    t.text "mission_text"
-    t.text "contact_info"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
   create_table "home_services", force: :cascade do |t|
     t.string "types"
     t.datetime "created_at", precision: 6, null: false
@@ -54,9 +42,7 @@ ActiveRecord::Schema.define(version: 2020_11_14_220725) do
   create_table "listings", force: :cascade do |t|
     t.string "ad_name"
     t.string "business_name"
-    t.string "logo_image"
     t.text "ad_message"
-    t.string "ad_image"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "home_service_id"
