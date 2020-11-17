@@ -11,7 +11,6 @@ class Listing {
 
     displayFromDb(){
         let listingLocation  = document.getElementById("main")
-    //   debugger
         listingLocation.innerHTML += 
         `
         <div id =${this.id}>
@@ -27,10 +26,7 @@ class Listing {
         <br>
         <div>
         `
-        // debugger
     }
-}
 
-//             <h3>Home Service:</h3><p>${this.ad_name} </p>
-//             <h3>Ad Name:</h3><p>${element.ad_name}</p>
-//             <h3>Business Name:</h3><p>${element.business_name}</p>
+
+}

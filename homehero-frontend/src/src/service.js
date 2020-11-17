@@ -1,7 +1,8 @@
-class Service {
+class HomeService {
     constructor(types){
         this.types = types;
-        Service.all.push(this);
+        HomeService.all.push(this);
     }
 }
-Service.all = [];
+HomeService.all = [];
+

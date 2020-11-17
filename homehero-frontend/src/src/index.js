@@ -2,32 +2,20 @@
 const BASE_URL = "http://localhost:3000/listings";
 const main = document.querySelector('#main');
 const listingFormDiv = document.getElementById("listing-form");
-const addForm = document.querySelector("#add-listing-form")
+const addForm = document.querySelector("#add-listing-form");
 const showListingsButton = document.getElementById("listings");
-// debugger 
-  //initialize Listing class
-//   const listing = new Listing()
+
 // ********* startup routine => make fetch to get initial data *********** //
 
 document.addEventListener('DOMContentLoaded', () => {
-    // fetchAllListings() = immediately load all listings
-    // debugger
     document.getElementById("create-listing-form").addEventListener("submit", createListing);
-    showListingsButton.addEventListener("click", pullFromDB)
-    // showListingsButton.addEventListener("click", ()=>{console.log("I was clicked")})
-// debugger
-    // addForm.addEventListener("click", createListing);
-    // pullFromDB();
-
+    document.getElementById("service-list").addEventListener("submit", help)
 });
 
 
 function makeForm() {
-    // debugger
     event.preventDefault()
     let createForm = document.getElementById("create-listing-form")
-    //in our index.html =saving location into a variable createForm, that location is saved
-    //<!-- <button class=”submit”>Create</button> --> 
     createForm.innerHTML = ""
     createForm.innerHTML += `
     <div id="listing-Form" > 
@@ -77,17 +65,11 @@ function makeForm() {
 </form>
 </div>
 ` 
-
- //triggers that function
-// debugger
-    // in that location in the innerHTML add string 
-
 }
 
 
 function clearForm(){
     let listingsUL = document.getElementById("create-listing-form")
-    // debugger
     listingsUL.innerHTML = ""
 
 }
@@ -96,7 +78,6 @@ function clearForm(){
 // Fetch request to POST new listings
 function createListing(){
     event.preventDefault()
-    // clearUL()
     
     const listing = { 
         ad_name: document.getElementById('ad-name').value, 
@@ -105,8 +86,6 @@ function createListing(){
     ad_message: document.getElementById('ad-message').value,
     home_service_updated_at: document.getElementById('home-service-updated-at').value,
  }
-
-    // debugger
 
     const configObj = {
         method: 'POST',
@@ -121,19 +100,13 @@ function createListing(){
         .then(response => response.json())
         .then(listings => {
             pullFromDB(listings)
-            // console.log(listings)
-            // let dateStr = JSON.parse(json);
-            // let date = new Date(dateStr); 
         })
 
      clearForm();
-    //  document.getElementById("listing-Form").addEventListener("submit", pullFromDB)
-
     }
 
 // ************************* //FETCH to Delete listing ************************ //
 function removeListing(){
-    //   debugger
     let listingId = event.target.parentElement.id      
     event.preventDefault()
    
@@ -146,25 +119,21 @@ function removeListing(){
     }
         
     fetch(BASE_URL + `/${listingId}`,configObj)
-        // debugger
         event.target.parentElement.remove()
     
 }
 
+// ************************* //FETCH listing object data from DB & oo-js ************************ //
 
 function pullFromDB(){
-    // console.log("I was clicked")
-    // event.preventDefault()
    let listingLocation = document.getElementById("main")
     listingLocation.innerHTML = ""
-
 
     fetch(`${BASE_URL}`)
     .then(res => res.json())
     .then(listings => {
      
         listings.forEach(listing => {
-            // debugger
             let id = listing.id
             let ad_name = listing.ad_name
             let business_name = listing.business_name
@@ -173,9 +142,8 @@ function pullFromDB(){
             let ad_message = listing.ad_message
             let home_service_updated_at = new Date(listing.home_service.updated_at).toLocaleTimeString('en-US', { weekday: 'long', day: 'numeric', month: 'long', year : 'numeric', hour: 'numeric', hour12: true, minute: 'numeric' })
             let l = new Listing(id, ad_name, business_name, home_service_id, home_service_type, ad_message, home_service_updated_at)
-            // debugger
             l.displayFromDb()
-
         })
     })
 }
+
