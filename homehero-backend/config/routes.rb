@@ -16,7 +16,8 @@ Rails.application.routes.draw do
 
 
   resources :listings
-  resources :businesses
+  
+ 
   # get '/businesses'  => 'businesses#' 
   # get '/homeservices'  => 'homeservices#' 
 
