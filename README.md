@@ -57,12 +57,12 @@ Other than the gems listed in this app's Gemfile, you will need to have [Ruby](h
 
 Currently, installation of the project can be performed locally with the following steps:
 
-    1. Navigate to the repo on GitHub [here](https://github.com/sandienunez/homehero)
+    1. Navigate to the repo on GitHub here[https://github.com/sandienunez/homehero] 
     2. Fork and clone the [GitHub repo](https://github.com/sandienunez/homehero) to your local machine. 
     3. Click the green Clone or Download button and copy the remote URL.
-``` 
+
 git@github.com:sandienunez/homehero.git
-```
+
     4. Type git clone then paste the copied URL into your terminal.
     5. Type 'bundle install' to install dependencies. 
 
