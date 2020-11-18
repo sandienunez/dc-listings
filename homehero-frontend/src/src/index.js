@@ -52,7 +52,8 @@ function makeForm() {
 <br>
 <br>
 <br>
-<label>Write your Ad Message here:</label>
+<label>Write your Ad Message here. Please include your COVID-19 protocols that your team has taken to ensure that CDC guidelines are being met:</label>
+<br>
 <br>
 <textarea id="ad-message" cols="50" rows="10"></textarea>
 <br>
