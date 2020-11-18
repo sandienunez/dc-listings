@@ -1,5 +1,3 @@
-# homehero
-
 # [homehero](https://github.com/sandienunez/homehero)
 
 ### __homehero__ is a Single Page Application that easily allows you to create, save and view listings for household services in the DC, MD and Northern VA Area.  It was designed as a portfolio project at the Flatiron School. __homehero__ is written in JavaScript, Ruby on Rails, HTML and CSS.
