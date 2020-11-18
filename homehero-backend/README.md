@@ -61,14 +61,14 @@ Other than the gems listed in this app's Gemfile, you will need to have [Ruby](h
 
 Currently, installation of the project can be performed locally with the following steps:
 
-    1. Navigate to the repo on GitHub at https://github.com/sandienunez/homehero
-    2. Fork and clone the [GitHub repo](https://github.com/sandienunez/homehero) to your local machine. 
-    3. Click the green Clone or Download button and copy the remote URL.
-``` 
+1. Navigate to the repo on GitHub [here](https://github.com/sandienunez/homehero)
+2. Fork and clone the [GitHub repo](https://github.com/sandienunez/homehero) to your local machine. 
+3. Click the green Clone or Download button and copy the remote URL.
+
 git@github.com:sandienunez/homehero.git
-```
-    4. Type git clone then paste the copied URL into your terminal.
-    5. Type 'bundle install' to install dependencies. 
+
+4. Type git clone then paste the copied URL into your terminal.
+5. Type 'bundle install' to install dependencies. 
 
 ## Installing
 
@@ -84,8 +84,8 @@ $ rake db:seed
 
 To start the Rails server for this project, run rails s. Then, you can do any of the following:
 
-* Navigate to http://localhost:3000/api/v1/concoctions to see the JSON for all of the saved concoctions
-* Navigate to http://localhost:3000/api/v1/concoctions/[write the concoction number here] to see the JSON for an individual concoction
+* Navigate to http://localhost:3000/listings to see the JSON for all of the saved concoctions
+* Navigate to http://localhost:3000/listings/[write the concoction number here] to see the JSON for an individual concoction
 * Navigate to http://localhost:3000/rails/info/routes to see this project's available routes (or run rails routes in your terminal).
 To exit the server, hit Ctrl-C or Cmd-C in your terminal. Additionally, if you wish to play around with the saved data, run rails c in your terminal; to exit, hit Ctrl-D or Cmd-D.
 
