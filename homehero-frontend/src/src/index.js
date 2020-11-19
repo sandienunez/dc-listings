@@ -99,8 +99,8 @@ function createListing(){
     
     fetch(BASE_URL, configObj)
         .then(response => response.json())
-        .then(listings => {
-            pullFromDB(listings)
+        .then(listing => {
+            pullFromDB(listing)
         })
 
      clearForm();
@@ -130,7 +130,7 @@ function pullFromDB(){
    let listingLocation = document.getElementById("main")
     listingLocation.innerHTML = ""
 
-    fetch(`${BASE_URL}`)
+    fetch(`${BASE_URL}`) //get
     .then(res => res.json())
     .then(listings => {
      
@@ -141,8 +141,8 @@ function pullFromDB(){
             let home_service_id = listing.home_service_id
             let home_service_type = listing.home_service.types 
             let ad_message = listing.ad_message
-            let home_service_updated_at = new Date(listing.home_service.updated_at).toLocaleTimeString('en-US', { weekday: 'long', day: 'numeric', month: 'long', year : 'numeric', hour: 'numeric', hour12: true, minute: 'numeric' })
-            let l = new Listing(id, ad_name, business_name, home_service_id, home_service_type, ad_message, home_service_updated_at)
+            let updated_at = new Date(listing.updated_at).toLocaleTimeString('en-US', { weekday: 'long', day: 'numeric', month: 'long', year : 'numeric', hour: 'numeric', hour12: true, minute: 'numeric' })
+            let l = new Listing(id, ad_name, business_name, home_service_id, home_service_type, ad_message, updated_at)
             l.displayFromDb()
         })
     })
