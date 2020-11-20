@@ -8,8 +8,8 @@ const showListingsButton = document.getElementById("listings");
 // ********* startup routine => make fetch to get initial data *********** //
 
 document.addEventListener('DOMContentLoaded', () => {
+    // debugger
     document.getElementById("create-listing-form").addEventListener("submit", createListing);
-    document.getElementById("service-list").addEventListener("submit", help)
 });
 
 
@@ -48,8 +48,11 @@ function makeForm() {
 <label>Business Name:</label>
 <br>
 <input type="text" id="business-name">
-
 <br>
+<br>
+<label>Link Business Website Here:</label>
+<br>
+<input type="text" id="business-site-url">
 <br>
 <br>
 <label>Write your Ad Message here. Please include your COVID-19 protocols that your team has taken to ensure that CDC guidelines are being met:</label>
@@ -59,7 +62,7 @@ function makeForm() {
 <br>
 <br>
 <br>
-<p><span id="home-service-updated-at" </span></p>
+<p><span id="updated-at" </span></p>
 <br>
 <input type="submit"></p>
 </input>
@@ -83,9 +86,10 @@ function createListing(){
     const listing = { 
         ad_name: document.getElementById('ad-name').value, 
     business_name: document.getElementById('business-name').value,
+    business_site_url: document.getElementById('business-site-url').value,
     home_service_id: document.getElementById('service-list').value,
     ad_message: document.getElementById('ad-message').value,
-    home_service_updated_at: document.getElementById('home-service-updated-at').value,
+    updated_at: document.getElementById('updated-at').value
  }
 
     const configObj = {
@@ -108,7 +112,8 @@ function createListing(){
 
 // ************************* //FETCH to Delete listing ************************ //
 function removeListing(){
-    let listingId = event.target.parentElement.id      
+    let listingId = event.target.parentElement.id    
+    // debugger  
     event.preventDefault()
    
     const configObj = {
@@ -138,13 +143,28 @@ function pullFromDB(){
             let id = listing.id
             let ad_name = listing.ad_name
             let business_name = listing.business_name
+            let business_site_url = listing.business_site_url
             let home_service_id = listing.home_service_id
             let home_service_type = listing.home_service.types 
             let ad_message = listing.ad_message
             let updated_at = new Date(listing.updated_at).toLocaleTimeString('en-US', { weekday: 'long', day: 'numeric', month: 'long', year : 'numeric', hour: 'numeric', hour12: true, minute: 'numeric' })
-            let l = new Listing(id, ad_name, business_name, home_service_id, home_service_type, ad_message, updated_at)
+            let l = new Listing(id, ad_name, business_name, home_service_id, home_service_type, ad_message, updated_at, business_site_url)
             l.displayFromDb()
         })
     })
 }
 
+// function myFunc() {
+//     const img = document.getElementById("home-hero-logo").src = "img/homehero.png";
+//     const imgBtn = document.getElementById("img");
+//         imgBtn.addEventListener('click', () => {
+//             img.style.width="200px";                         // set image width
+// img.style.height="200px";    
+
+//         })
+ 
+//   }
+
+//   myFunc()
+
+//   img.style.visibility = (visible ? 'visible' : 'hidden');

@@ -42,6 +42,7 @@ ActiveRecord::Schema.define(version: 2020_11_17_143533) do
   create_table "listings", force: :cascade do |t|
     t.string "ad_name"
     t.string "business_name"
+    t.string "business_site_url"
     t.text "ad_message"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
