@@ -69,13 +69,16 @@ function makeForm() {
 </form>
 </div>
 ` 
+let hideCreateListingButton = document.getElementById("add-listing-form"); 
+hideCreateListingButton.style.visibility="hidden";
 }
 
 
 function clearForm(){
     let listingsUL = document.getElementById("create-listing-form")
     listingsUL.innerHTML = ""
-
+    let showCreateListingButton = document.getElementById("add-listing-form"); 
+    showCreateListingButton.style.visibility="visible";
 }
 
 
@@ -154,17 +157,13 @@ function pullFromDB(){
     })
 }
 
-// function myFunc() {
-//     const img = document.getElementById("home-hero-logo").src = "img/homehero.png";
-//     const imgBtn = document.getElementById("img");
-//         imgBtn.addEventListener('click', () => {
-//             img.style.width="200px";                         // set image width
-// img.style.height="200px";    
 
-//         })
- 
-//   }
+// function myFunction() {
+//     let x = document.getElementById("add-listing-form");
 
-//   myFunc()
-
-//   img.style.visibility = (visible ? 'visible' : 'hidden');
+    // if (x.style.display === "none") {
+    //   x.style.display = "block";
+    // } else {
+    //   x.style.display = "none";
+//     }
+  
