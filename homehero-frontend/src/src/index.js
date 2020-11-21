@@ -103,7 +103,7 @@ function createListing(){
     
     fetch(BASE_URL, configObj)
         .then(response => response.json())
-        .then(listing => {
+        .then(listing => { // singular listing = one thing we got back 
             pullFromDB(listing)
         })
 
@@ -135,7 +135,7 @@ function pullFromDB(){
    let listingLocation = document.getElementById("main")
     listingLocation.innerHTML = ""
 
-    fetch(`${BASE_URL}`) //get
+    fetch(`${BASE_URL}`) //get request
     .then(res => res.json())
     .then(listings => {
      
