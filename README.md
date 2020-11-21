@@ -45,9 +45,11 @@ REST => Representation State Transfer => set of conventions for structuring our 
 
 ## Motivation
 
-Due to the recent global pandemic, hundreds of thousands of household businesses in our area, have seen their clientele and jobs reduce drastically.
+Due to the recent global pandemic, hundreds of thousands of small household businesses in our area, have seen their clientele and jobs reduce drastically. Homehero to the rescue!
 
-My goal was to create a website that would bring together all the ad listings of small household businesses in the Washington D.C., Maryland and Virginia area in order to highlight all the amazing small business teams during this crisis. Many people are not sure which businesses are still open and what COVID-19 policies each company is making sure to implement during this time. Homehero does all the heavy lifting for you! Instead of endlessly googling and yelping which small household companies can help you repair your fridge, clean your home, paint your garage, fix your pool, change your pipes and more...simply click on the "Listings" button to see all the listings in the DC Metro area. If you are a business, then you can easily create your own Listing by clicking on the "Create Listing" button which takes you to the Listing form. Here, you fill out your business name, ad name, write your ad message, write out your COVID-19 policies and choose the type of Home Service that your business offers. 
+My goal was to create a website that would bring together all the ad listings of small household businesses in the Washington D.C., Maryland and Virginia area in order to highlight all the amazing small business teams during this crisis. Many people are not sure which businesses are still open and what COVID-19 policies each company is making sure to implement during this time. Homehero does all the heavy lifting for you! Instead of endlessly googling and yelping which small household companies can help you repair your fridge, clean your home, paint your garage, fix your pool, change your pipes and more...simply click on the "Listings" button to see all the listings in the DC Metro area. 
+
+If you are a business, then you can easily create your own Listing by clicking on the "Create Listing" button which takes you to the Listing form. Here, you fill out your business name, list your business website, create your ad name, write your ad message, detail your COVID-19 policies and choose the type of Home Service that your small business offers. 
 
 
 ## Prerequisites
