@@ -22,9 +22,10 @@ class Listing {
         <h3>Home Service:</h3><p> ${this.home_service_type}</p>
         <h3>Ad Message:</h3><p> ${this.ad_message}</p>
         <h3>Time posted:</h3><p> ${this.updated_at}</p>
-
-
-        <input type="button" id="delete" onclick="removeListing()" value="Delete"/><br/>
+        <br>
+        <br>
+        <input type="button" id="delete" onclick="removeListing()" value="Delete"></input>
+       
         <br>
         <div>
         `

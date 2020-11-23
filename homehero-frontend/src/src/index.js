@@ -18,7 +18,7 @@ function makeForm() {
     let createForm = document.getElementById("create-listing-form")
     createForm.innerHTML = ""
     createForm.innerHTML += `
-    <div id="listing-Form" > 
+    <div id="listing-form" > 
     <form>
 
     <label>Choose your Home Service:</label>
@@ -112,6 +112,7 @@ function createListing(){
 
      clearForm();
     }
+    
 
 // ************************* //FETCH to Delete listing ************************ //
 function removeListing(){
@@ -157,13 +158,3 @@ function pullFromDB(){
     })
 }
 
-
-// function myFunction() {
-//     let x = document.getElementById("add-listing-form");
-
-    // if (x.style.display === "none") {
-    //   x.style.display = "block";
-    // } else {
-    //   x.style.display = "none";
-//     }
-  

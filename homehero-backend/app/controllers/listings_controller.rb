@@ -21,8 +21,11 @@ class ListingsController < ApplicationController
       end
 
       def update
-        listing = Listing.find(params[:id])
-        render json: listing
+        if listing.update(listing_params)
+          render json: listing
+        else
+          render json: {errors: listing.errors.full_messages}
+        end
       end
     
       def destroy
