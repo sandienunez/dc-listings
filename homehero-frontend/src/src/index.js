@@ -148,7 +148,7 @@ function pullFromDB(){
     .then(res => res.json())
     .then(listings => {
      
-        listings.forEach(listing => {
+        listings.forEach(listing => { // take listing and get all of its data
             let id = listing.id
             let ad_name = listing.ad_name
             let business_name = listing.business_name
@@ -158,7 +158,16 @@ function pullFromDB(){
             let ad_message = listing.ad_message
             let updated_at = new Date(listing.updated_at).toLocaleTimeString('en-US', { weekday: 'long', day: 'numeric', month: 'long', year : 'numeric', hour: 'numeric', hour12: true, minute: 'numeric' })
             let l = new Listing(id, ad_name, business_name, home_service_id, home_service_type, ad_message, updated_at, business_site_url)
-            l.displayFromDb()
+            //JS performs constructor invocation = call creates a new Listing object
+            // name property = all attributes 
+            //role of constructor function = initialize instance
+            // constructor call = creates new empty object 
+            // = which inherits properties from the constructor’s prototype
+            //a new object is created and initialized because new keyword is present in the constructor invocation
+//A verification is added in the constructor function: this instanceof Vehicle, to make sure that execution context 
+//is a correct object type — whenever Vehicle('Broken Car', 3) is executed without new an exception is thrown: 
+//Error: Incorrect invocation.
+            l.displayFromDb() //(property accessor) display db info to new instance object
         })
     })
 }
