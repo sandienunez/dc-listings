@@ -1,7 +1,8 @@
 class ListingsController < ApplicationController
     def index
         listings = Listing.all.reverse
-        render json: listings 
+        render json: listings #response
+        #JSON you get back in your fetch comes from this line 
     end
 
     def show

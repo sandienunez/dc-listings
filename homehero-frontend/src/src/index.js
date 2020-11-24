@@ -1,6 +1,5 @@
 // ********* global constants = so I don't have to repeat myself ************
 const BASE_URL = "http://localhost:3000/listings";
-const main = document.querySelector('#main');
 const listingFormDiv = document.getElementById("listing-form");
 const addForm = document.querySelector("#add-listing-form");
 const showListingsButton = document.getElementById("listings");
@@ -70,7 +69,8 @@ function makeForm() {
 </div>
 ` 
 let hideCreateListingButton = document.getElementById("add-listing-form"); 
-hideCreateListingButton.style.visibility="hidden";
+hideCreateListingButton.style.visibility="hidden"; 
+//hides create listing button when form displays and when user is submitting form 
 }
 
 
@@ -78,7 +78,8 @@ function clearForm(){
     let listingsUL = document.getElementById("create-listing-form")
     listingsUL.innerHTML = ""
     let showCreateListingButton = document.getElementById("add-listing-form"); 
-    showCreateListingButton.style.visibility="visible";
+    showCreateListingButton.style.visibility="visible"; 
+    //shows create listing button again  after user submits form and form is cleared
 }
 
 
@@ -86,6 +87,7 @@ function clearForm(){
 function createListing(){
     event.preventDefault()
     
+    //Destructuring mass assignment syntax with Objects= helps assign property values to variables 
     const listing = { 
         ad_name: document.getElementById('ad-name').value, 
     business_name: document.getElementById('business-name').value,
@@ -98,19 +100,22 @@ function createListing(){
     const configObj = {
         method: 'POST',
         body: JSON.stringify(listing),
-        headers: {
+        headers: { //helps us know what kind of content we're sending over 
+        //what we would want back as a response 
             'Content-Type': 'application/json', 
             'Accept': 'application/json'
         }
     }
     
-    fetch(BASE_URL, configObj)
+    fetch(BASE_URL, configObj) //POST request to listings
         .then(response => response.json())
-        .then(listing => { // singular listing = one thing we got back 
+        .then(listing => { // singular listing 
+            //= one JS listing object/JSON data hash array with id we got back
+            // w/ all attribute values we sent over
             pullFromDB(listing)
         })
 
-     clearForm();
+     clearForm(); //hides form after listing object created
     }
     
 
@@ -128,7 +133,7 @@ function removeListing(){
         }
     }
         
-    fetch(BASE_URL + `/${listingId}`,configObj)
+    fetch(BASE_URL + `/${listingId}`,configObj) //DELETE request to listings 
         event.target.parentElement.remove()
     
 }
@@ -139,7 +144,7 @@ function pullFromDB(){
    let listingLocation = document.getElementById("main")
     listingLocation.innerHTML = ""
 
-    fetch(`${BASE_URL}`) //get request
+    fetch(`${BASE_URL}`) //GET request to listings 
     .then(res => res.json())
     .then(listings => {
      
