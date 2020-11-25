@@ -3,13 +3,48 @@ const BASE_URL = "http://localhost:3000/listings";
 const listingFormDiv = document.getElementById("listing-form");
 const addForm = document.querySelector("#add-listing-form");
 const showListingsButton = document.getElementById("listings");
+const showsearchButton = document.getElementById("search-button")
+
+
+
+
 
 // ********* startup routine => make fetch to get initial data *********** //
 
 document.addEventListener('DOMContentLoaded', () => {
+    pullFromDB()
+    //doc = entry point into browser content/web page loaded in browser/ lets us access/manipulate DOM
+    //teach node how to listen for an event + triggers event listeners on DOM nodes  
     // debugger
     document.getElementById("create-listing-form").addEventListener("submit", createListing);
+
 });
+
+
+function makeSearch() {
+    event.preventDefault()
+    const searchRequest = document.getElementById("search-bar").value
+    const myCollection = listingsArray.find(listing => listing.business_name.toLowerCase() == searchRequest.toLowerCase() || listing.ad_name.toLowerCase() == searchRequest.toLowerCase() || listing.home_service.types.toLowerCase() == searchRequest.toLowerCase())
+    if (myCollection) {
+        const displaySearch = document.getElementById("search-result")
+        // debugger
+       
+        displaySearch.innerHTML = `
+        <h3>Ad Name:</h3><p>${myCollection.ad_name} </p>
+                <h3>Business Name:</h3><p>${myCollection.business_name}</p>
+                <h3>Business Website:</h3><p><a href="${myCollection.business_site_url}">${myCollection.business_site_url}</a></p>
+                <h3>Home Service:</h3><p> ${myCollection.home_service.types}</p>
+                <h3>Ad Message:</h3><p> ${myCollection.ad_message}</p>
+                <h3>Time posted:</h3><p> ${new Date(myCollection.updated_at).toLocaleTimeString('en-US', { weekday: 'long', day: 'numeric', month: 'long', year : 'numeric', hour: 'numeric', hour12: true, minute: 'numeric' })}</p>
+        `  
+}  else {
+        const displaySearch = document.getElementById("search-result")
+        displaySearch.innerHTML = `Search result not found.` 
+
+}
+
+}
+
 
 
 function makeForm() {
@@ -95,6 +130,7 @@ function createListing(){
     home_service_id: document.getElementById('service-list').value,
     ad_message: document.getElementById('ad-message').value,
     updated_at: document.getElementById('updated-at').value
+    //get/extract values from object 
  }
 
     const configObj = {
@@ -138,7 +174,7 @@ function removeListing(){
     
 }
 
-// ************************* //FETCH listing object data from DB & oo-js ************************ //
+// ************************* //FETCH all listing object data from DB & oo-js ************************ //
 
 function pullFromDB(){
    let listingLocation = document.getElementById("main")
@@ -147,7 +183,8 @@ function pullFromDB(){
     fetch(`${BASE_URL}`) //GET request to listings 
     .then(res => res.json())
     .then(listings => {
-     
+    listingsArray = listings //global variable
+    // debugger
         listings.forEach(listing => { // take listing and get all of its data
             let id = listing.id
             let ad_name = listing.ad_name
@@ -159,6 +196,7 @@ function pullFromDB(){
             let updated_at = new Date(listing.updated_at).toLocaleTimeString('en-US', { weekday: 'long', day: 'numeric', month: 'long', year : 'numeric', hour: 'numeric', hour12: true, minute: 'numeric' })
             let l = new Listing(id, ad_name, business_name, home_service_id, home_service_type, ad_message, updated_at, business_site_url)
             //JS performs constructor invocation = call creates a new empty Listing object
+            //new = make  JS object
             l.displayFromDb() //(property accessor) display db info to new instance object
         })
     })
