@@ -24,7 +24,7 @@ document.addEventListener('DOMContentLoaded', () => {
 function makeSearch() {
     event.preventDefault()
     const searchRequest = document.getElementById("search-bar").value
-    const myCollection = listingsArray.find(listing => listing.business_name.toLowerCase() == searchRequest.toLowerCase() || listing.ad_name.toLowerCase() == searchRequest.toLowerCase() || listing.home_service.types.toLowerCase() == searchRequest.toLowerCase())
+    const myCollection = listingsArray.filter(listing => listing.business_name.toLowerCase() == searchRequest.toLowerCase() || listing.ad_name.toLowerCase() == searchRequest.toLowerCase() || listing.home_service.types.toLowerCase() == searchRequest.toLowerCase())
     if (myCollection) {
         const displaySearch = document.getElementById("search-result")
         // debugger
@@ -44,7 +44,6 @@ function makeSearch() {
 }
 
 }
-
 
 
 function makeForm() {
